@@ -14,7 +14,9 @@ $mainFont: "Permanent Marker";
 }
 
 body {
+background-color: rgba(255, 255, 255, 0.2);
   background-image: url("../images/hockey.jpg");
+  background-blend-mode: color;
   color: white;
   perspective: 400;
   padding: 15px;
@@ -90,6 +92,7 @@ h2 {
 
 img {
   margin-left: 40px;
+  border-radius: 100%;
   border: 2px black solid;
   box-shadow: 0 15px 35px rgba(46, 94, 244, 0.10), 0 5px 15px rgba(0, 0, 0, 0.07);
 }

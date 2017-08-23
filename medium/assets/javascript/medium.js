@@ -38,10 +38,112 @@
 
 (function(){
 
+  let shoot1=$("#teamone-shoot");
+  let shoot2=$("#teamtwo-shoot");
+  let resetBtn=$("#reset");
+  let teamOnePercent = setPercent();
+  let teamTwoPercent = setPercent();
+  console.log("team percentages for checking: team 1: " + teamOnePercent + " team 2: " + teamTwoPercent);
+
+  let resetNum = $("#num-resets");
+  let teamOneShots = $("#teamone-numshots");
+  let teamOneHit = $("#teamone-numhits");
+  let teamOneWins=$("#teamone-wins");
+  let teamTwoShots = $("#teamtwo-numshots");
+  let teamTwoHit = $("#teamtwo-numhits");
+  let teamTwoWins=$("#teamtwo-wins");
+  let winValue = false;
+  let yay = $("#yay")[0];
+  let intro = $("#intro")[0];
+  let reset = $("#resetSnd")[0];
+  let noHit = $("#noHit")[0];
+  let bk = $("#background");
+  //intro.play();
+
+
+  function setPercent (){
+      var percent = Math.random();
+      while (percent < .5 || percent > .7){
+        percent = Math.random();
+        console.log(percent);
+      }
+        return percent;
+    }
+
+    function winTest(teamPercent) {
+  let chance = Math.random();
+  console.log("team chance: " + teamPercent + " chance: " + chance);
+  if(chance>teamPercent) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
   //jQuery equivelent to window.onload = function{}
   //code in here wont run until page loads
   $(function(){
 
+
+
+resetBtn.click(function(){
+        //what runs when the button is clicked
+//resetSnd.play();
+resetNum.html(parseInt(resetNum.html()) + 1);
+   if(teamOneHit.html()>teamTwoHit.html()){//team one wins
+     //console.log ("1 wins team1: " + teamOneHit.html()) + " team2: " + teamTwoHit.html());
+     teamOneWins.html(parseInt(teamOneWins.html()) + 1);
+   }
+   if (teamOneHit.html()<teamTwoHit.html()){
+     //console.log ("2 wins team1: " + teamOneHit.html() + " team2: " + teamTwoHit.html());
+     teamTwoWins.html(parseInt(teamTwoWins.html()) + 1);//team two wins
+   }
+
+  teamOneShots.html(0);
+  teamOneHit.html(0);
+  teamTwoShots.html(0);
+  teamTwoHit.html(0);
+  //reset background
+  let url = "assets/images/hockey.jpg"
+  $('body').css('background-image', 'url(' + url + ')');
+  //$('body').css({background-image:'url(../images/hockey.jpg)'});
+
+      })//what happens when the event happens
+
+shoot1.click(function(){
+        //what runs when the button is clicked
+winValue = winTest(teamOnePercent);
+  teamOneShots.html(parseInt(teamOneShots.html()) + 1);
+  if(winValue===true)
+    {
+      //change background image
+      //background-image: url("../images/hockey.jpg");
+    teamOneHit.html(parseInt(teamOneHit.html()) + 1);
+    //$('body').css({background-image:'url(../images/bruinsGoal.jpg)'});
+    let url = "assets/images/bruinsGoal.jpg"
+    $('body').css('background-image', 'url(' + url + ')');
+    yay.play();
+  } else {
+    noHit.play();
+  }
+      })//what happens when the event happens
+
+shoot2.click(function(){
+        //what runs when the button is clicked
+winValue = winTest(teamTwoPercent);
+  teamTwoShots.html(parseInt(teamTwoShots.html()) + 1);
+  if(winValue===true)
+    {
+      //change background image
+    teamTwoHit.html(parseInt(teamTwoHit.html()) + 1);
+    let url = "assets/images/canucksGoal.jpeg"
+    $('body').css('background-image', 'url(' + url + ')');
+    yay.play();
+  } else {
+    noHit.play();
+  }
+      })//what happens when the event happens
 
 
   })

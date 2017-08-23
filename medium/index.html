@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JS Game Challenge</title>
+  <title>Hockey Battle!</title>
   <style type="text/css">
     .hide {
       display: none;
@@ -16,10 +16,15 @@
       clear: both;
     }
   </style>
+  <link rel="stylesheet" type="text/css" href="assets/stylesheets/styles.css">
+  <audio id="yay"><source src="assets/sounds/yay.mp3"></audio>
+  <audio id="intro"><source src="assets/sounds/intro.mp3"></audio>
+  <audio id="resetSnd"><source src="assets/sounds/reset.mp3"></audio>
+  <audio id="noHit"><source src="assets/sounds/noHit.mp3"></audio>
 </head>
 <body>
   <div style="width: 700px;margin: 0 auto;">
-    <h1 style="margin-bottom:5px">Hockey, JavaScript, and jQuery oh My!</h1>
+    <h1 style="margin-bottom:5px">Hockey Battle!</h1>
     <h2 style="margin-top: 0">...the game!</h2>
     <div style="margin: 0 auto;text-align:center">
       <button id="reset">RESET</button><br>
@@ -28,11 +33,13 @@
     <div class="clear"></div>
     <div class="left">
       <h2>
-        Team 1
+        Boston Bruins
       </h2>
+      <img src="assets/images/bostonBruins.gif" alt="boston bruins logo">
       <div class="hits">
         SHOTS TAKEN: <span id="teamone-numshots">0</span><br>
-        GOALS: <span id="teamone-numhits">0</span>
+        GOALS: <span id="teamone-numhits">0</span><br>
+        WINS: <span id="teamone-wins">0</span>
       </div>
       <div>
         <button id="teamone-shoot">SHOOT</button>
@@ -40,11 +47,13 @@
     </div>
     <div class="right">
       <h2>
-        Team 2
+        Vancouver Canucks
       </h2>
+      <img src="assets/images/vancouverCanucks.gif" alt="vancouver canucks logo">
       <div class="hits">
         SHOTS TAKEN: <span id="teamtwo-numshots">0</span><br>
-        GOALS: <span id="teamtwo-numhits">0</span>
+        GOALS: <span id="teamtwo-numhits">0</span><br>
+        WINS: <span id="teamtwo-wins">0</span>
       </div>
       <div>
         <button id="teamtwo-shoot">SHOOT</button>
@@ -52,6 +61,8 @@
     </div>
     <div class="clear"></div>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
   <script src="assets/javascript/medium.js"></script>
 </body>
 </html>
