@@ -17,7 +17,9 @@
 
   var saveButton = $('#save-button');
   var loadButton = $('#load-button');
-
+  let myStorage = window.localStorage;
+  let storageKey = 0;
+  alert("made it to js file")
   /**
    * Gets the text from the element for you
    * @return {String}
@@ -32,5 +34,19 @@
    */
   function setText(text) {
     return $('#save-me').val(text);
+
   }
+
+  saveButton.click(function(){
+    //console.log("Made it here");
+    storageKey = storageKey + 1;
+    localStorage.setItem(storageKey, getText());
+
+      });
+//what happens when the event happens
+  loadButton.click(function(){
+    setText(localStorage.getItem(storageKey));
+  })
+
+
 })();
