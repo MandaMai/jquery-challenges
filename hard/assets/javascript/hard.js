@@ -14,7 +14,7 @@
  *
  * 1. Any time someone clicks on the title at the top "feed template,"
  *    make the color of the "feed template" text change from black to red
- *    and then from red to black when clicked again.
+ *    and then from red to black when clicked again.X
  *
  * 2. The links on the side of the page – "your name," "section 1," "section 2," etc. –
  *    hide every odd-numbered link in the menu.
@@ -31,9 +31,22 @@
 
  (function(){
 
+   $('h1').css("color", "rgb(0,0,0)");//rgb(0,0,0)=black  rgb(255,0,0)=red
+
    //jQuery equivelent to window.onload = function{}
    //code in here wont run until page loads
-   $(function(){
+
+
+   $(function() {
+
+    $('h1').click(function(){
+      if($('h1').css('color')=="rgb(0, 0, 0)"){
+        $('h1').css("color", "rgb(255,0,0)");
+      } else {
+        $('h1').css("color", "rgb(0,0,0)");
+      }
+   });
+
 
 
 
